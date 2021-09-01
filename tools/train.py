@@ -3,16 +3,11 @@ import copy
 import os
 import os.path as osp
 import sys
-sys.path.append('/data/home/shigexu/ft_local/Mmseg')
-sys.path.append('/apdcephfs/private_shigexu/ft_local/Mmseg')
-sys.path.append('/apdcephfs/private_shigexu')
 import time
-
 import mmcv
 import torch
 from mmcv.runner import init_dist
 from mmcv.utils import Config, DictAction, get_git_hash
-
 from mmseg import __version__
 from mmseg.apis import set_random_seed, train_segmentor
 from mmseg.datasets import build_dataset

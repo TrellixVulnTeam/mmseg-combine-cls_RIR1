@@ -1,3 +1,14 @@
+该mmseg为处理ocr版面分割所用的主要框架，对其进行一些修改：
+
+1. 修改dataset build方式，新增cls_label.json的读取与保存，内容包含每张图所对的分类标签
+2. 修改dataloader build方式，在读取gt segmentation时同时根据图片和cls_label.json读取该图的分类标签并写入meta中
+3. 修改resnetv1c backbone， 编写一个cls—head用于对图像整体进行分类，全连接的输入与decode—head输入一致
+4. 在训练时分割与分类同时进行，forward_train时读取meta中存放的cls_label，交叉熵计算cls-head的输出与label的loss，与分割loss同时进行反向计算，更新梯度
+6. 同时完善了test，inference，evaluation模块，评估分割的miou指标的同时，评估分类指标acc
+7. 修改mmseg中的model，apis等模块，例如在5分类的分割任务中，类别1和2是更加关注的点，则调整保存模型所依据的指标，使该指标更多的权重分布在类别1和2；
+9. 将pth模型trace成gt模型；
+
+
 <div align="center">
   <img src="resources/mmseg-logo.png" width="600"/>
 </div>

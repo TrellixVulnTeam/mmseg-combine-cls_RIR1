@@ -1,18 +1,14 @@
 import argparse
 import os
 import sys
-sys.path.append('/data/home/shigexu/ft_local/Mmseg')
-sys.path.append('/apdcephfs/private_shigexu/ft_local/Mmseg')
 import mmcv
 import torch
 from mmcv.parallel import MMDataParallel, MMDistributedDataParallel
 from mmcv.runner import (get_dist_info, init_dist, load_checkpoint,
                          wrap_fp16_model)
 from mmcv.utils import DictAction
-
 from mmseg.apis import multi_gpu_test, single_gpu_test
 from mmseg.datasets import build_dataloader, build_dataset
-
 from mmseg.models import build_segmentor
 
 
