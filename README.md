@@ -3,7 +3,7 @@
 mmcv 0.3.1   mmcv-full 1.3.7
 
 * 分层多尺度
-  文件目录303行见注释
+  1. 文件目录303行见注释
   Mmseg/mmseg/models/segmentors/encoder_decoder.py
   <div align="center">
     <img src="readme_png/multiscale-diflayer.png" width="800"/>
@@ -11,7 +11,7 @@ mmcv 0.3.1   mmcv-full 1.3.7
   <br />
 
 * mmseg分类与分割并行
-  在voc格式数据集中指定位置，需要有cls-label.json。包含了每张图对应的标签，通用文档-0，ppt-1，格式如下。
+  1. 在voc格式数据集中指定位置，需要有cls-label.json。包含了每张图对应的标签，通用文档-0，ppt-1，格式如下。
   <div align="center">
     <img src="readme_png/cls0.png" width="300"/>
   </div>
@@ -20,62 +20,62 @@ mmcv 0.3.1   mmcv-full 1.3.7
     <img src="readme_png/cls1.png" width="600"/>
   </div>
   <br />
-  在Mmseg/mmseg/datasets/custom.py中对cls-label.json 进行读取并保存，用于计算指标，保存方式如下
+  2. 在Mmseg/mmseg/datasets/custom.py中对cls-label.json 进行读取并保存，用于计算指标，保存方式如下
   <div align="center">
     <img src="readme_png/cls2.png" width="600"/>
   </div>
   <br />
-  训练时需要用到cls-label，(在200行)准备训练数据时将cls-label加入到img-metas中去
+  3. 训练时需要用到cls-label，(在200行)准备训练数据时将cls-label加入到img-metas中去
   <div align="center">
     <img src="readme_png/cls3.png" width="600"/>
   </div>
   <br />
-  测试时需要对分类结果进行accuracy指标输出。在318行编写了cls-acc函数用于计算精度
+  4. 测试时需要对分类结果进行accuracy指标输出。在318行编写了cls-acc函数用于计算精度
   <div align="center">
     <img src="readme_png/cls4.png" width="600"/>
   </div>
   <br />
-  在/Mmseg/mmseg/models/segmentors/encoder_decoder.py中，设置cls-head和lossfn用于计算分类的out和loss，由于分类与分割公用backbone，所以decode-head的输入通道数即为cls-head中全连接层的输入维度。
+  5. 在/Mmseg/mmseg/models/segmentors/encoder_decoder.py中，设置cls-head和lossfn用于计算分类的out和loss，由于分类与分割公用backbone，所以decode-head的输入通道数即为cls-head中全连接层的输入维度。
   <div align="center">
     <img src="readme_png/cls5.png" width="600"/>
   </div>
   <br />
-  在160行进行分类loss，acc的计算并更新到total-loss中用于整体梯度更新
+  6. 在160行进行分类loss，acc的计算并更新到total-loss中用于整体梯度更新
   <div align="center">
     <img src="readme_png/cls6.png" width="600"/>
   </div>
   <br />
-  在测试过程中增加返回值cls-out，同时更改所用到的所有测试流程函数
+  7. 在测试过程中增加返回值cls-out，同时更改所用到的所有测试流程函数
   <div align="center">
     <img src="readme_png/cls7.png" width="600"/>
   </div>
   <br />
-  Mmseg/mmseg/apis/test.py中保存整体cls的预测label，最后回到datasets进行计算指标
+  8. Mmseg/mmseg/apis/test.py中保存整体cls的预测label，最后回到datasets进行计算指标
   <div align="center">
     <img src="readme_png/cls9.png" width="600"/>
   </div>
   <br />
 
 * 已尝试内容
-  模型：
-    deeplabv3+(resnet)
-    deeplabv3+(resnet+dcn)
-    deeplabv3+(resnest)
-    vit
-    swin
-    setr
-    hrnet
-    对比上述模型v3+（resnet）在ocr版面分割任务中前向速度最快，指标也最高
-  方法：
-    分层多尺度：见上面4（有效）
-    标签腐蚀：固定中心坐标不变，将每一个目标的mask覆盖区域进行收缩处理，原图不进行处理。（有效）
+  1. 模型：
+    * deeplabv3+(resnet)
+    * deeplabv3+(resnet+dcn)
+    * deeplabv3+(resnest)
+    * vit
+    * swin
+    * setr
+    * hrnet
+    * 对比上述模型v3+（resnet）在ocr版面分割任务中前向速度最快，指标也最高
+  2. 方法：
+    * 分层多尺度：见上面4（有效）
+    * 标签腐蚀：固定中心坐标不变，将每一个目标的mask覆盖区域进行收缩处理，原图不进行处理。（有效）
 
     <div align="center">
       <img src="readme_png/erode.png" width="600"/>
     </div>
     <br />
 
-    booststrap：标签腐蚀的升级版，将mask进行随机大幅度裁剪而非小尺度收缩，之后对原图进行背景均化（有效）
+    * booststrap：标签腐蚀的升级版，将mask进行随机大幅度裁剪而非小尺度收缩，之后对原图进行背景均化（有效）
     * booststrap前
 
     <div align="center">
@@ -91,7 +91,7 @@ mmcv 0.3.1   mmcv-full 1.3.7
     <br />
 
 * trace流程
-  在Mmseg/trace_tools下
+  * 在Mmseg/trace_tools下
     1.trace_cpu.py  ===== 将pth模型转换为pt模型
       --model_path：  pth模型地址
       --dst-trace-path：想要保存的pt模型文件		
