@@ -6,7 +6,7 @@ mmcv 0.3.1   mmcv-full 1.3.7
   文件目录303行见注释
   Mmseg/mmseg/models/segmentors/encoder_decoder.py
   <div align="center">
-    <img src="readme_png/multiscale-diflayer.png" width="300"/>
+    <img src="readme_png/multiscale-diflayer.png" width="600"/>
   </div>
   <br />
 
@@ -17,7 +17,7 @@ mmcv 0.3.1   mmcv-full 1.3.7
   </div>
   <br />
   <div align="center">
-    <img src="readme_png/cls1.png" width="300"/>
+    <img src="readme_png/cls1.png" width="600"/>
   </div>
   <br />
   在Mmseg/mmseg/datasets/custom.py中对cls-label.json 进行读取并保存，用于计算指标，保存方式如下
