@@ -116,7 +116,7 @@ show_dir/
 show_dir_scale2.0/
 show_dir_scale1.0/
 show_dir_scale0.5/
-trace_tools/
+
 models_sdk/
 # Pytorch
 *.pth
