@@ -6,14 +6,14 @@ mmcv 0.3.1   mmcv-full 1.3.7
   文件目录303行见注释
   Mmseg/mmseg/models/segmentors/encoder_decoder.py
   <div align="center">
-    <img src="readme_png/multiscale-diflayer.png" width="600"/>
+    <img src="readme_png/multiscale-diflayer.png" width="800"/>
   </div>
   <br />
 
 * mmseg分类与分割并行
   在voc格式数据集中指定位置，需要有cls-label.json。包含了每张图对应的标签，通用文档-0，ppt-1，格式如下。
   <div align="center">
-    <img src="readme_png/cls0.png" width="600"/>
+    <img src="readme_png/cls0.png" width="300"/>
   </div>
   <br />
   <div align="center">
