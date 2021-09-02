@@ -67,7 +67,7 @@ mmcv 0.3.1   mmcv-full 1.3.7
     * hrnet
     * 对比上述模型v3+（resnet）在ocr版面分割任务中前向速度最快，指标也最高
   2. 方法：
-    * 分层多尺度：见上面4（有效）
+    * 分层多尺度：见上面1（有效）
     * 标签腐蚀：固定中心坐标不变，将每一个目标的mask覆盖区域进行收缩处理，原图不进行处理。（有效）
 
     <div align="center">
@@ -92,12 +92,12 @@ mmcv 0.3.1   mmcv-full 1.3.7
 
 * trace流程
   * 在Mmseg/trace_tools下
-    1.trace_cpu.py  ===== 将pth模型转换为pt模型
+    * trace_cpu.py  ===== 将pth模型转换为pt模型
       --model_path：  pth模型地址
       --dst-trace-path：想要保存的pt模型文件		
       --config-path:  pth模型对应的config文件
       -- img-path： 任意图片
-    2.trace-cpu-valid.py ===== 验证pth模型与pt模型是否一致
+    * trace-cpu-valid.py ===== 验证pth模型与pt模型是否一致
       --model-path： pt模型地址
       --pytorch-model-path： pth模型地址
       --config-path：pth模型对应的config
