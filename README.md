@@ -75,7 +75,7 @@ mmcv 0.3.1   mmcv-full 1.3.7
     </div>
     <br />
 
-    * booststrap：标签腐蚀的升级版，将mask进行随机大幅度裁剪而非小尺度收缩，之后对原图进行背景均化（有效）
+    * booststrap：标签腐蚀的升级版，将mask进行随机大幅度裁剪而非小尺度收缩，帮助网络学习目标特征，之后对原图进行背景均化（有效）
     * booststrap前
 
     <div align="center">
