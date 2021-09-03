@@ -33,8 +33,10 @@ if __name__ == '__main__':
     data = collate([data], samples_per_gpu=1)
     data['img_metas'] = [i.data[0] for i in data['img_metas']]
     data['img_metas'][0][0]['trace'] = 1
-    model = init_segmentor(config_path, checkpoint=model_path, device='cpu')
+    model = init_segmentor(config_path, checkpoint=model_path, device=device)
     tensor = data['img'][0]
+    if device == 'cuda:0':
+        tensor = tensor.cuda()
     print('图像增强后并转换为张量： ', tensor.size())
     
     model = Mmseg_deeplabv3plus(model, data['img_metas'])
