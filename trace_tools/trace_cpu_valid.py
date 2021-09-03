@@ -23,6 +23,8 @@ if __name__ == '__main__':
     data = collate([data], samples_per_gpu=1) #预处理后数据提取
     data['img_metas'] = [i.data[0] for i in data['img_metas']]
     tensor = data['img'][0] #输入张量，这里len(data['img'])==1,即实际需要的tensor被放在一个列表中
+    if device == 'cuda:0':
+        tensor = tensor.cuda()
     print(tensor.size())
 
     # mmseg的pytorch模型， 用于检验pt模型是否与之一致
